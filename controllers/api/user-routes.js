@@ -58,7 +58,7 @@ router.post('/', (req,res) => {
 });
 
 // update user
-router.put('/', (req,res) => {
+router.put('/:id', (req,res) => {
     User.update(req.body, {
         // req.body means to only update what is being passed through
         individualHooks: true,
@@ -81,7 +81,7 @@ router.put('/', (req,res) => {
 
 
 // delete a user
-router.delete('/', (req,res) => {
+router.delete('/:id', (req,res) => {
     User.destroy({
         where: {
             id: req.params.id
