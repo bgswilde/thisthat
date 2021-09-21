@@ -4,7 +4,10 @@ const sequelize = require('../config/connection')
 
 
 class User extends Model {
-    
+    // take plain text pass word to compare to hashed password
+    checkPassword(loginPW) {
+        return bcrypt.compareSync(loginPW, this.password);
+    }
 }
 
 
@@ -25,13 +28,11 @@ User.init(
             }
         },
         password: {
-            type: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    len: [3]
+                    len: [4]
                 }
-            }
         }
     },
     {
@@ -40,7 +41,7 @@ User.init(
             async beforeCreate(user) {
                 // saltroudn = 10, the higher the more hashing rounds
                 user.password = await bcrypt.hash(user.password, 10);
-                return user.password
+                return user;
             },
             // beforeUpdate always to to set a value on a model before saving it
             async beforeUpdate(updateUser) {
