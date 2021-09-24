@@ -44,7 +44,7 @@ VALUES
     ('Playstation', 'Xbox'),
     ('Drive', 'Ride Shotgun');
 
-INSERT INTO choice (q_id, user_id, choice)
+INSERT INTO choice (question_id, user_id, choice)
 VALUES
     (1, 1, true),
     (2, 1, false),

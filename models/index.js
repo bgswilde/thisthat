@@ -8,7 +8,7 @@ User.hasMany(Question, {
 });
 
 Question.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
 })
 
 // DOUBlE CHECK THE FOREIGN KEY AND MAKE SURE THEY THE RIGHT ONES 
@@ -29,6 +29,14 @@ Choice.belongsTo(User, {
 });
 
 Choice.belongsTo(Question, {
+    foreignKey: 'question_id'
+});
+
+User.hasMany(Choice, {
+    foreignKey: 'user_id'
+});
+
+Question.hasMany(Choice, {
     foreignKey: 'question_id'
 });
 

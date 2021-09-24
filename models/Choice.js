@@ -10,10 +10,13 @@ Choice.init(
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
+        },
+        choice: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }, 
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'
@@ -21,16 +24,11 @@ Choice.init(
         },
         question_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'question',
                 key:'id'
             }
         },
-        choice: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
-        }
     },
     {
         sequelize,
