@@ -11,25 +11,19 @@ Question.init(
             allowNull: false,
             autoIncrement: true
         }, 
-        this_question: {
+        this_true: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,50]
             },
-            references: {
-                model: 'choice',
-                key: 'id'
-            }
         },
-        that_question: {
+        that_false: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,50]
-            },
-            references: 'choice',
-            key: 'id'
+            }
         }
     },
     {

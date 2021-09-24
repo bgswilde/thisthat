@@ -26,6 +26,10 @@ Choice.init(
                 model: 'question',
                 key:'id'
             }
+        },
+        choice: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     },
     {
