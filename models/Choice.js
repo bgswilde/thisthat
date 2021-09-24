@@ -19,12 +19,20 @@ Choice.init(
                 key: 'id'
             }
         },
-        question_id: {
-            type: DataTypes.INTEGER,
+        this_question_ans: {
+            type: DataTypes.BOOLEAN,
             allowNull: false,
             references: {
-                model: 'question',
+                model: 'this_question',
                 key:'id'
+            }
+        },
+        that_question_ans: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            references: {
+                model: 'that_question',
+                key: 'id'
             }
         }
     },

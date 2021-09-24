@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection')
 
-class Question extends Model {}
+class ThatQuestion extends Model {}
 
-Question.init(
+ThatQuestion.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,25 +11,17 @@ Question.init(
             allowNull: false,
             autoIncrement: true
         }, 
-        this_question: {
+        question: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1,50]
-            },
-            references: {
-                model: 'choice',
-                key: 'id'
             }
         },
-        that_question: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1,50]
-            },
-            references: 'choice',
-            key: 'id'
+        vote_count: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            ifNull: 0,
         }
     },
     {
@@ -37,9 +29,8 @@ Question.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'question'
+        modelName: 'that_question'
     }
 );
 
-
-module.exports = Question;
+module.exports = ThatQuestion;
