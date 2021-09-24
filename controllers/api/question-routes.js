@@ -35,6 +35,7 @@ const {User, Question, Choice } = require('../../models');
 
 router.get('/', (req,res) => {
     Question.findAll({
+        
     })
     .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
@@ -83,6 +84,18 @@ router.post('/', (req,res) => {
         res.status(500).json(err);
     })
 });
+
+// choice route
+router.put('/choice', (req,res) => {
+    Choice.create({
+        user_id: req.body.user_id,
+        question_id: req.body.question_id,
+        choice: req.body.choice
+    })
+    .then(() => {
+        //find what 
+    })
+})
 
 // update question
 router.put('/:id', (req,res) => {
