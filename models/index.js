@@ -7,8 +7,8 @@ User.hasMany(Question, {
     foreignKey: 'user_id'
 });
 
-Question.hasMany(User, {
-    foreignKey: 'question_id'
+Question.belongsTo(User, {
+    foreignKey: 'user_id'
 })
 
 // DOUBlE CHECK THE FOREIGN KEY AND MAKE SURE THEY THE RIGHT ONES 

@@ -1,9 +1,27 @@
 const router = require('express').Router();
-const { Question } = require('../../models');
+const sequelize = require('../../config/connection');
+const { User, Question, Choice } = require('../../models');
 
 // get all users 
 router.get('/', (req,res) => {
-    Question.findAll({})
+    Question.findAll({
+        order: [['created_at', 'DESC']],
+        attributes: [
+            'id',
+            'this_true',
+            'this_false',
+            'created_at',
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`, 'answer_count')]],
+            include:[
+                // {
+                //     model: 
+                // },
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+    })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
         console.log(err);
@@ -14,8 +32,6 @@ router.get('/', (req,res) => {
 // get single user
 router.get('/:id', (req,res) => {
     Question.findOne({
-        // this makes sure we don't see user password
-        attributes: { exclude: ['password']},
         where: {
             id: req.params.id
         }
