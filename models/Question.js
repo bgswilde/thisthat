@@ -24,14 +24,6 @@ Question.init(
             validate: {
                 len: [1,50]
             }
-        },
-        this_vote: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        that_vote: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         }
     },
     {
