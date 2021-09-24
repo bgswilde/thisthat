@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes');
-const questionRoutes = require('./user-routes');
+const questionRoutes = require('./question-routes');
 
 // all user routes will have /users prefix
 router.use('/users', userRoutes);
