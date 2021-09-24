@@ -16,6 +16,10 @@ Question.init(
             allowNull: false,
             validate: {
                 len: [1,50]
+            },
+            references: {
+                model: 'choice',
+                key: 'id'
             }
         },
         that_question: {
@@ -23,7 +27,9 @@ Question.init(
             allowNull: false,
             validate: {
                 len: [1,50]
-            }
+            },
+            references: 'choice',
+            key: 'id'
         }
     },
     {
