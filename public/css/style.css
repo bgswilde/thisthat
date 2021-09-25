@@ -1,0 +1,46 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #efbe96 0%,
+        #efbe96 50%,
+        #00867e 50%,
+        #00867e 100%
+    );
+   
+
+};
+
+
+.resize {
+    width: 400px;
+    height: auto;
+    
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resize {
+    width: 300px;
+    height: auto;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+
+.btn{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
