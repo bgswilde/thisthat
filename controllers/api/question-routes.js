@@ -35,6 +35,13 @@ const {User, Question, Choice } = require('../../models');
 
 router.get('/', (req,res) => {
     Question.findAll({
+        attributes: [
+            'id','this_true','that_false',
+            [
+                sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`),
+                'answer_count'
+            ]
+        ]
     })
     .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
@@ -81,6 +88,35 @@ router.post('/', (req,res) => {
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
+    })
+});
+
+// choice route
+router.put('/choice', (req,res) => {
+    Choice.create({
+        user_id: req.body.user_id,
+        question_id: req.body.question_id,
+        choice: req.body.choice
+    })
+    .then(() => {
+        // now find question that was answered
+        return Question.findOne({
+            where: {
+                id: req.body.question_id
+            },
+            attributes: [
+                'id','this_true','that_false',
+                [
+                    sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`),
+                    'answer_count'
+                ]
+            ]
+        })
+    })
+    .then(dbChoiceData => res.json(dbChoiceData))
+    .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
     })
 });
 
