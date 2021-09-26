@@ -29,7 +29,7 @@ body{
     transform: translate(-50%, -25%);
 }
 
-
+/* 
 .resize {
     width: 400px;
     height: auto;
@@ -38,10 +38,10 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 .resize {
-    width: 300px;
+    width: 500px;
     height: auto;
 
     display: block;
