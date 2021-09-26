@@ -12,11 +12,24 @@ body{
         #00867e 50%,
         #00867e 100%
     );
-   
-
-};
+}
 
 
+.image{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.log-in{
+    position: fixed;
+    left: 50%;
+    bottom: 25%;
+    transform: translate(-50%, -25%);
+}
+
+/* 
 .resize {
     width: 400px;
     height: auto;
@@ -25,22 +38,13 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 .resize {
-    width: 300px;
+    width: 500px;
     height: auto;
 
     display: block;
     margin-left: auto;
     margin-right: auto 
 }
-
-
-.btn{
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 100px;
-}
-

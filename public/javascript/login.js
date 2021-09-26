@@ -18,7 +18,7 @@ async function loginFormHandler(event) {
         if(response.ok){
             // right now if user exists then it will display success
             // document.location.replace('/dashboard');
-            console.log('succes');
+            console.log('success');
         }
     }
 }
