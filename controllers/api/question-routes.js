@@ -37,10 +37,16 @@ router.get('/', (req,res) => {
     Question.findAll({
         attributes: [
             'id','this_true','that_false',
-            [
-                sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`),
-                'answer_count'
-            ]
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count']],
+        include: [
+            {
+                model: Choice,
+                attributes: ['question_id','user_id','choice'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
         ]
     })
     .then(dbQuestionData => res.json(dbQuestionData))
@@ -55,15 +61,20 @@ router.get('/:id', (req,res) => {
     Question.findOne({
         where: {
             id: req.params.id
-        }
-        // include: [
-        //     {
-        //         model: Post
-        //     },
-        //     {
-        //         model: Comment
-        //     }
-        // ]
+        },
+        attributes: [
+            'id','this_true','that_false',
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count']],
+        include: [
+            {
+                model: Choice,
+                attributes: ['question_id','user_id','choice'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
     })
     .then(dbQuestionData => {
         if(!dbQuestionData) {
@@ -93,6 +104,7 @@ router.post('/', (req,res) => {
 
 // choice route
 router.put('/choice', (req,res) => {
+    // to only allow loged in user then we can add if(req.session) and pull all this conde inside
     Choice.create({
         user_id: req.body.user_id,
         question_id: req.body.question_id,

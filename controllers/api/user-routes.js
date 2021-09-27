@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Question, Choice } = require('../../models');
 
 // get all users 
 router.get('/', (req,res) => {
@@ -22,12 +22,14 @@ router.get('/:id', (req,res) => {
         where: {
             id: req.params.id
         }
+        // this would be helpfull to see all the questions this specific user has created
+        // but that also means we have to add use_id to the question.js model
         // include: [
         //     {
-        //         model: Post
-        //     },
-        //     {
-        //         model: Comment
+        //         model: Question,
+        //         attributes: ['id'],
+        //         through: Choice,
+        //         as: 'choice_vote'
         //     }
         // ]
     })
