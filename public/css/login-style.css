@@ -1,0 +1,19 @@
+
+
+body{
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #efbe96 0%,
+        #efbe96 50%,
+        #00867e 50%,
+        #00867e 100%
+    );
+}
+
+form{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

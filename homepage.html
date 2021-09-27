@@ -9,16 +9,81 @@
     <title>ThisThat</title>
 </head>
 <body>
-    <div class="container d-flex align-items-center">
-        <div class="log-in">
-            <button type="button" class="btn btn-outline-light">Sign-In / Sign-Up</button>
+    <!-- Just an image -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="./public/images/thisthat-tt.png" width="30" height="30" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link" href="#">Sign-Up/Sign-In</a>
+              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="#">Previous Answers</a>
+            </div>
+          </div>
         </div>
+    </nav>
     
+<<<<<<< HEAD
         <img class= "resize logo mx-auto d-block my-auto" src="./public/images/thisthatlogo.png" alt="thisthat logo">
+=======
+    <div class="image">
+        <img class= "resize logo" src="./public/images/thisthatlogo.png" alt="thisthat logo">
+>>>>>>> 9b691316b56ff071157e88eca4e9f0abf9fadd40
     </div>
-    
 
+    <div class="container">
+        <div class="btn-container">
+            <div class="log-in">
+                <button type="button" class="btn btn-outline-light">Sign-In / Sign-Up</button>
+            </div>
+        </div>
+    </div>
 
+    <div class="credentials">
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Sign Up</h5>
+                    <div class="form-group text-dark">
+                      <label for="username">Username</label>
+                      <input type="username" class="form-control" id="username" aria-describedby="userHelp">
+                      <small id="userHelp" class="form-text text-dark">Make it a fun one!</small>
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1"> <br>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Sign Up</button>             
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Log-in</h5>
+                    <div class="form-group text-dark">
+                      <label for="username">Username</label>
+                      <input type="username" class="form-control" id="username" aria-describedby="userHelp">
+                      <small id="userHelp" class="form-text text-dark">Welcome Back!</small>
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1"> <br>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Log-in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
     
 </body>
 </html>

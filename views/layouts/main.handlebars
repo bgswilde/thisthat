@@ -9,7 +9,27 @@
     <title>ThisThat</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="/images/thisthat-tt.png" width="30" height="30" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" href="#">Home</a>
+              {{#if loggedIn}}
+              <a class="nav-link" href="#">Dashboard</a>
+              <a class="nav-link" href="#">Logout</a>
+              {{else}}
+              <a class="nav-link" href="#">Sign-Up/Sign-In</a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+    </nav>
 {{{ body }}}
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
