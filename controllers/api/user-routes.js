@@ -15,7 +15,7 @@ router.get('/', (req,res) => {
 });
 
 // get single user
-/*router.get('/:id', (req,res) => {
+router.get('/:id', (req,res) => {
     User.findOne({
         // this makes sure we don't see user password
         attributes: { exclude: ['password']},
@@ -42,7 +42,7 @@ router.get('/', (req,res) => {
         console.log(err);
         res.status(500).json(err);
     })
-});*/
+});
 
 // create a user
 router.post('/', (req,res) => {

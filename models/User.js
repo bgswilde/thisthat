@@ -38,14 +38,14 @@ User.init(
     {
         hooks: {
             // set up beforeCreate lifecycle "hook"
-            async beforeCreate(user) {
+            async beforeCreate(newuser) {
                 // saltroudn = 10, the higher the more hashing rounds
-                user.password = await bcrypt.hash(user.password, 10);
-                return user;
+                newuser.password = await bcrypt.hash(newuser.password, 8);
+                return newuser;
             },
             // beforeUpdate always to to set a value on a model before saving it
             async beforeUpdate(updateUser) {
-                updateUser.password = await bcrypt.hash(updateUser.password, 10);
+                updateUser.password = await bcrypt.hash(updateUser.password, 8);
                 return updateUser;
             }
 
