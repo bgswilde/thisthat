@@ -14,11 +14,12 @@ DROP TABLE IF EXISTS question;
 --     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     this_true VARCHAR(50) NOT NULL,
 --     that_false VARCHAR(50) NOT NULL
+--     -- created_at DATETIME DEFAULT CURRENT_DATE
 -- );
 
 -- CREATE TABLE user (
 --     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     username VARCHAR() NOT NULL,
+--     username VARCHAR(30) NOT NULL,
 --     password VARCHAR(30) NOT NULL
 -- );
 
