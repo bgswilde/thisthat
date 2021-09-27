@@ -60,15 +60,27 @@ form{
 }
 
 
-.btn{
+.btn {
     display: flex;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
 }
 
+.btn-nav-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-nav-link:hover {
+    color: black;
+}
+
 @include media-breakpoint-up(sm) {
     .some-class {
       display: block;
     }
-  }
+}
