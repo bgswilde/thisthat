@@ -1,10 +1,12 @@
 <div class="container">
-    {{> top-option}}
+    {{#each questions as |question|}}
+    {{> top-option question}}
 
     <div class="image my-6">
         <img class= "resize-smaller" src="/images/thisthattext.png" alt="thisthat logo">
     </div>
 
 
-    {{> bottom-option}}
+    {{> bottom-option question}}
+    {{/each}}
 </div>

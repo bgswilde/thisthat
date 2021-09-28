@@ -90,8 +90,8 @@ form{
     box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
 }
 
-@include media-breakpoint-up(sm) {
+/* @include media-breakpoint-up(sm) {
     .some-class {
       display: block;
     }
-}
+} */

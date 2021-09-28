@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const {User, Question, Choice } = require('../../models');
-const auth = require('../../utils/authorize')
+// const auth = require('../../utils/authorize')
 
 // get all question
 // router.get('/', (req,res) => {
@@ -99,7 +99,7 @@ router.get('/:id', (req,res) => {
 });
 
 // create aquestion
-router.post('/', auth, (req,res) => {
+router.post('/', (req,res) => {
     Question.create({
        this_true: req.body.this_true,
        that_false: req.body.that_false 
@@ -112,7 +112,7 @@ router.post('/', auth, (req,res) => {
 });
 
 // choice route
-router.put('/choice', auth, (req,res) => {
+router.put('/choice', (req,res) => {
     // to only allow loged in user then we can add if(req.session) and pull all this conde inside
     Choice.create({
         user_id: req.body.user_id,
@@ -142,7 +142,7 @@ router.put('/choice', auth, (req,res) => {
 });
 
 // update question
-router.put('/:id', auth, (req,res) => {
+router.put('/:id', (req,res) => {
     Question.update(req.body, {
         // req.body means to only update what is being passed through
         individualHooks: true,
@@ -164,7 +164,7 @@ router.put('/:id', auth, (req,res) => {
 });
 
 // delete aquestion
-router.delete('/:id', auth, (req,res) => {
+router.delete('/:id', (req,res) => {
     Question.destroy({
         where: {
             id: req.params.id
