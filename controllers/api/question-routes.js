@@ -3,6 +3,14 @@ const sequelize = require('../../config/connection');
 const {User, Question, Choice } = require('../../models');
 // const auth = require('../../utils/authorize')
 
+// get a count of all questions, to use as a max question filter so a user doesn't keep on going.
+router.get('/count', (req, res) => {
+    Question.count({}).then(dbQuestionCount => res.json(dbQuestionCount))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+})
 // get all question
 // router.get('/', (req,res) => {
 //     Question.findAll({
