@@ -40,11 +40,9 @@ form{
     visibility: hidden;
 }
 
-.resize {
-    width: 400px;
+.resize-smaller {
+    width: 200px;
     height: auto;
-    
-
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -53,7 +51,6 @@ form{
 .resize {
     width: 500px;
     height: auto;
-
     display: block;
     margin-left: auto;
     margin-right: auto 
@@ -77,6 +74,25 @@ form{
 
 .btn-nav-link:hover {
     color: black;
+}
+
+.no-bkg {
+    background: none;
+    border: none;
+}
+
+.top-box {
+    position: fixed;
+    left: 50%;
+    top: 25%;
+    transform: translate(-25%, -25%);
+}
+
+.bottom-box {
+    position: fixed;
+    left: 50%;
+    bottom: 25%;
+    transform: translate(-25%, -25%);
 }
 
 @include media-breakpoint-up(sm) {
