@@ -82,10 +82,7 @@ form{
 }
 
 .top-box {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-25%, -25%);
+
 }
 
 .bottom-box {
