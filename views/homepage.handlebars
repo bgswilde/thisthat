@@ -1,17 +1,11 @@
 <div class="container">
         {{#if loggedIn}}
         <div class="btn-container">
-            <div class="log-in">
-                <a type="button" class="btn btn-lg btn-outline-light" href="./questions">Begin!</a>
-            </div>
+                <a class="log-in btn btn-lg btn-outline-light" href="./questions">Begin!</a>
         </div>
         {{else}}
         <div class="btn-container">
-            <div class="log-in">
-                <a href="./login">
-                    <button type="button" class="btn btn-lg btn-outline-light">Sign-In / Sign-Up</button>
-                </a>
-            </div>
+            <a class="log-in btn btn-lg btn-outline-light" href="./login"> Sign-In / Sign-Up</a>            
         </div>
         {{/if}}
 </div>
