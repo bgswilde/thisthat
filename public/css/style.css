@@ -81,19 +81,28 @@ form{
     border: none;
 }
 
-.top-box {
-    position: fixed;
-    left: 50%;
-    top: 25%;
-    transform: translate(-25%, -25%);
+.border-this{
+    border: #00867e;
+    border-width: 100px;
 }
 
-.bottom-box {
-    position: fixed;
-    left: 50%;
-    bottom: 25%;
-    transform: translate(-25%, -25%);
+.border-that{
+    border: #efbe96;
+    border-width: 10px;
 }
+
+
+.space{
+    margin-bottom: 70px;
+}
+
+.vertical-center {
+    min-height: 75%;
+    min-height: 75vh; 
+  
+    display: flex;
+    align-items: center;
+  }
 
 @include media-breakpoint-up(sm) {
     .some-class {
