@@ -1,11 +1,38 @@
 // handlebars will handle incrementing 
 
+
+
 let startingPoint = 0;
 // when startingPoint > 21, message to say you've answered everything
 
+async function getQuestion(event) {
+    event.preventDefault();
+
+    const topQuestion = document.querySelector('.top').value().trim();
+    const bottomQuestion = document.querySelector('.bottom').value().trim();
+
+    const response = await fetch('/api/', {
+        method: 'POST',
+        body: JSON.stringify({
+            topQuestion,
+            bottomQuestion
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        console.log('response was successful')
+        // document.location.replace()
+    } else{
+        alert(response.statusText);
+    }
+}
 /* 
 
 ----initial-----
+
 
 fetch find one question i
 index value ++
