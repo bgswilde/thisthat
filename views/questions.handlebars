@@ -1,4 +1,5 @@
 <div class="container">
+    {{#each questions as |question| }}
     {{> top-option question}}
 
     <div class="image my-6">
@@ -7,4 +8,6 @@
 
 
     {{> bottom-option question}}
+
+    {{/each}}
 </div>
