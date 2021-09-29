@@ -16,7 +16,7 @@ async function signUpHandler(event) {
         });
         // if promise is successful then
         if(response.ok){
-            // right now if user exists then it will display success
+        
             document.location.replace('/dashboard');
             console.log('success');
         }
@@ -41,7 +41,7 @@ async function loginFormHandler(event) {
         });
         // if promise is successful then
         if(response.ok){
-            // right now if user exists then it will display success
+            
             document.location.replace('/dashboard');
             console.log('success');
         }
@@ -49,5 +49,5 @@ async function loginFormHandler(event) {
 }
 
 document.querySelector('#signBtn').addEventListener('click', signUpHandler);
-// add #ID or .CLASS when they're created for login button 
+ 
 document.querySelector('#loginBtn').addEventListener('click', loginFormHandler);
