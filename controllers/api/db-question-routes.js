@@ -11,36 +11,6 @@ router.get('/count', (req, res) => {
         res.status(500).json(err);
     })
 })
-// get all question
-// router.get('/', (req,res) => {
-//     Question.findAll({
-//         // order: [['created_at', 'DESC']],
-//         attributes: [
-//             'id',
-//             'this_true',
-//             'that_false'
-//             [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`), 'answer_count']],
-//         include: [
-//                 // {
-//                 //     model: Choice,
-//                 //     attributes: ['id','this_true','this_false'],
-//                 //     include: {
-//                 //         model: User,
-//                 //         attributes: ['username']
-//                 //     }
-//                 // }
-//                 {
-//                     model: User,
-//                     attributes: ['username']
-//                 }
-//         ]
-//     })
-//     .then(dbUserData => res.json(dbUserData))
-//     .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     })
-// });
 
 router.get('/', (req,res) => {
     Question.findAll({
