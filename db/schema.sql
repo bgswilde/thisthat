@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS question;
 --     password VARCHAR(30) NOT NULL
 -- );
 
- CREATE TABLE choice (
-     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-     question_id INTEGER NOT NULL,
-     user_id INTEGER NOT NULL,
-     choice BOOLEAN NOT NULL,
-     CONSTRAINT fk_q_id FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE,
-     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
- );
+--  CREATE TABLE choice (
+--      id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--      question_id INTEGER NOT NULL,
+--      user_id INTEGER NOT NULL,
+--      choice BOOLEAN NOT NULL,
+--      CONSTRAINT fk_q_id FOREIGN KEY (question_id) REFERENCES question(id) ON DELETE CASCADE,
+--      CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+--  );
 

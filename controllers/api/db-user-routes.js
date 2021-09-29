@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Question, Choice } = require('../../models');
-const auth = require('../../utils/authorize');
+// const auth = require('../../utils/authorize');
 
 // get all users 
 router.get('/', (req,res) => {
@@ -48,7 +48,7 @@ router.get('/:id', (req,res) => {
 });
 
 // create a user
-router.post('/', auth, (req,res) => {
+router.post('/', (req,res) => {
     User.create({
         username: req.body.username,
         password: req.body.password
@@ -96,7 +96,7 @@ router.post('/login', (req, res) => {
 });
 
 // update user
-router.put('/:id', auth, (req,res) => {
+router.put('/:id',(req,res) => {
     User.update(req.body, {
         // req.body means to only update what is being passed through
         individualHooks: true,
@@ -127,7 +127,7 @@ router.post('/logout', (req, res) => {
     }
 })
 // delete a user
-router.delete('/:id', auth, (req,res) => {
+router.delete('/:id', (req,res) => {
     User.destroy({
         where: {
             id: req.params.id
