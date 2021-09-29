@@ -1,6 +1,7 @@
-// handlebars will handle incrementing 
-// var id = 1;
-// when startingPoint > 21, message to say you've answered everything
+const thisCard = document.getElementId('.top-card');
+const thisStat = document.getElementById('this-stat');
+const thatCard = document.querySelector('.bottom-card');
+const thatStat = document.getElementById('that-stat');
 
 async function getQuestion(event) {
     event.preventDefault();
@@ -30,32 +31,26 @@ async function getQuestion(event) {
     }
 };
 
-// async function getQuestion(event) {
-//     event.preventDefault();
+function selectThis() {
+    
+    thisStat.classList.remove("hidden");
+    thisCard.classlist.add("selected");
+    recordThisChoice();
+    setTimeout(getQuestion(), 4000) 
+}
 
-//     let id = 1;
+function selectThat() {
+    
+    thatStat.classList.remove("hidden");
+    thatCard.classlist.add("selected");
+    recordThatChoice();
+    setTimeout(getQuestion(), 4000) 
+}
 
-//     const response = await fetch(`/api/questions/${id}`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     });
-  
-
-//     if (response.ok) {
-//         id++;
-//         document.location.replace(`/questions/${id}`);
-//         console.log('next button clicked');
-//         // id++;
-//     } else{
-//         alert(response.statusText);
-//     }
-// };
-
-// document.querySelector('.second-question').addEventListener('click', secondQuestion);
 
 document.querySelector('.next-question').addEventListener('click', getQuestion);
+thisCard.addEventListener('click', selectThis);
+thatCard.addEventListener('click', selectThat);
 /* 
 
 ----initial-----

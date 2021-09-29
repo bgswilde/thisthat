@@ -29,13 +29,25 @@ async function newQuestionHandler(event) {
 }
 
 function confirmationMessage() {
-    form.reset
     message.classList.remove("hidden");
     setTimeout(function() {
         message.classList.add("hidden")
     }, 4000)
 }
 
+// function selectThis() {
+//     choiceFunction()
+//     message.classList.remove("hidden");
+//     selectedCard.classlist.add("selected"):
+//     setTimeout(getQuestion(), 4000) 
+// }
+
+// function selectThat() {
+//     choiceFunction()
+//     message.classList.remove("hidden");
+//     selectedCard.classlist.add("selected"):
+//     setTimeout(getQuestion(), 4000) 
+// }
   
 form.addEventListener('submit', newQuestionHandler);
   

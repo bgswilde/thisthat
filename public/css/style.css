@@ -81,6 +81,11 @@ form{
     box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
 }
 
+.top-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 22px 5px rgb(0 0 0 / 60%);
+}
+
 .bottom-card {
     border: 7px solid #efbe96;
     border-radius: 12px;
@@ -88,6 +93,10 @@ form{
     box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
 }
 
+.bottom-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 22px 5px rgb(0 0 0 / 60%);
+}
 
 .space-top {
     margin-bottom: 50px;
@@ -118,6 +127,11 @@ form{
 .hidden {
     display: none;
 }
+
+.selected {
+    background-color: #18ffdd;
+}
+
 
 
 @include media-breakpoint-up(sm) {
