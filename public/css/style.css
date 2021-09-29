@@ -89,8 +89,14 @@ form{
 }
 
 
-.space{
-    margin-bottom: 70px;
+.space-top {
+    margin-bottom: 50px;
+    margin-top: 80px;
+}
+
+.space-bottom {
+    margin-top: 100px;
+    margin-bottom: -64px;
 }
 
 .vertical-center {
@@ -99,7 +105,8 @@ form{
   
     display: flex;
     align-items: center;
-  }
+}
+
 
 @include media-breakpoint-up(sm) {
     .some-class {
