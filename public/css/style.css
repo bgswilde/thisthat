@@ -88,6 +88,19 @@ form{
     box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
 }
 
+
+.space{
+    margin-bottom: 70px;
+}
+
+.vertical-center {
+    min-height: 75%;
+    min-height: 75vh; 
+  
+    display: flex;
+    align-items: center;
+  }
+
 @include media-breakpoint-up(sm) {
     .some-class {
       display: block;
