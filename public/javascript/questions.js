@@ -2,26 +2,6 @@
 // var id = 1;
 // when startingPoint > 21, message to say you've answered everything
 
-// async function secondQuestion(event) {
-//     let id = 2;
-//     event.preventDefault();
-
-//     const response = await fetch(`/api/questions/${id}`, {
-//     });
-  
-
-//     if (response.ok) {
-//         document.location.replace(`/questions/${id}`);
-//         console.log('next button clicked');
-//         id++;
-//     } else{
-//         alert(response.statusText);
-//     }
-//     // id++
-// };
-
-// var id = 1;
-
 async function getQuestion(event) {
     event.preventDefault();
     
@@ -44,7 +24,9 @@ async function getQuestion(event) {
         console.log('next button clicked');
         // id++;
     } else{
-        alert(response.statusText);
+        // alert(response.statusText);
+        // add new handle bars so it can send user saying they've answered all question
+        // document.location.replace('/end');
     }
 };
 
