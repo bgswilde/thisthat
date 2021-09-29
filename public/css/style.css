@@ -1,0 +1,141 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #efbe96 0%,
+        #efbe96 50%,
+        #00867e 50%,
+        #00867e 100%
+    );
+}
+
+.image{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.log-in{
+    position: fixed;
+    left: 50%;
+    bottom: 25%;
+    transform: translate(-50%, -25%);
+}
+
+form{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.credentials{
+    visibility: hidden;
+}
+
+.resize-smaller {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+.resize {
+    width: 500px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+
+/* .btn {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.btn-nav-link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-nav-link:hover {
+    color: black;
+}
+
+.top-card {
+    border: 7px solid #00867e;
+    border-radius: 12px;
+    height: 199px;
+    box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
+}
+
+.top-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 22px 5px rgb(0 0 0 / 60%);
+}
+
+.bottom-card {
+    border: 7px solid #efbe96;
+    border-radius: 12px;
+    height: 199px;
+    box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
+}
+
+.bottom-card:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 22px 5px rgb(0 0 0 / 60%);
+}
+
+.space-top {
+    margin-bottom: 50px;
+    margin-top: 80px;
+}
+
+.space-bottom {
+    margin-top: 100px;
+    margin-bottom: -64px;
+}
+
+.vertical-center {
+    min-height: 75%;
+    min-height: 75vh; 
+  
+    display: flex;
+    align-items: center;
+}
+
+.action {
+    background-color: white;
+    border: 2px solid #00867e;
+    color: #00867e;
+    border-radius: 8px;
+    box-shadow: 0px 0px 22px 3px rgb(0 0 0 / 30%);
+}
+
+.hidden {
+    display: none;
+}
+
+.selected {
+    background-color: #18ffdd;
+}
+
+
+
+@include media-breakpoint-up(sm) {
+    .some-class {
+      display: block;
+    }
+}
