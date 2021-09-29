@@ -1,16 +1,16 @@
-const thisCard = document.getElementId('.top-card');
+const thisCard = document.getElementById('this-card');
 const thisStat = document.getElementById('this-stat');
-const thatCard = document.querySelector('.bottom-card');
+const thatCard = document.getElementById('that-card');
 const thatStat = document.getElementById('that-stat');
 
+// gets question one by one
 async function getQuestion(event) {
     event.preventDefault();
-    
+    // gets the last section of url, the id of the question
     let id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     id++;
-    console.log(id);
 
     const response = await fetch(`/api/questions/${id}`, {
         method: 'GET',
@@ -19,15 +19,11 @@ async function getQuestion(event) {
         }
     });
   
-
     if (response.ok) {
         document.location.replace(`/questions/${id}`);
         console.log('next button clicked');
-        // id++;
     } else{
-        // alert(response.statusText);
-        // add new handle bars so it can send user saying they've answered all question
-        // document.location.replace('/end');
+        document.location.replace('/end');
     }
 };
 
@@ -48,18 +44,68 @@ function selectThat() {
 }
 
 
+async function recordThisChoice(event) {
+    event.preventDefault();
+
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length -1 
+    ]; 
+
+    const response = await fetch(`api/questions/choice`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            question_id: id,
+            // how to get user id? can't use req.session.id
+            // user_id: 
+            choice: true
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        // send over to next question
+        getQuestion();
+        console.log('CHOICE SELECTED');
+    } else{
+        document.location.reload();
+    }
+};
+
+async function recordThatChoice(event) {
+    event.preventDefault();
+
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length -1 
+    ]; 
+
+    const response = await fetch(`api/questions/choice`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            question_id: id,
+            // how to get user id? can't use req.session.id
+            // user_id: 
+            choice: false
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        console.log('CHOICE SELECTED');
+    } else{
+        document.location.reload();
+    }
+}
+
+// document.querySelector('').addEventListener('click', recordChoice);
+document.querySelector('.next-question').addEventListener('click', getQuestion);
 document.querySelector('.next-question').addEventListener('click', getQuestion);
 thisCard.addEventListener('click', selectThis);
 thatCard.addEventListener('click', selectThat);
-/* 
-
-----initial-----
-
-
-fetch find one question i
-index value ++
-
- 
+/*  
 ----next action-----
 
 event listener for each option
@@ -75,5 +121,4 @@ event listener on next button
 when they select next
 hidden classes applied again
 back to initial function
-
 */
