@@ -85,6 +85,10 @@ router.get('/create', (req, res) => {
     res.render('create-question');
 });
 
+router.get('/end', (req, res) => {
+    res.render('end');
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
