@@ -1,7 +1,9 @@
 
 <div class="container d-flex flex-column justify-content-center my-auto vertical-center">
     {{#each questions as |question|}}
-    {{> top-option question}}
+    <a id="this-card">
+        {{> top-option question}}
+    </a>
 
     <div class="image my-6">
         <img class= "resize-smaller" src="/images/thisthattext.png" alt="thisthat logo">
@@ -11,8 +13,8 @@
     {{/each}}
 </div>
 
-<div>
-    <button type="submit" class="next-question">NEXT QUESTION</button>
+<div class="container justify-items-center">
+    <button type="submit" class="next-question action">NEXT QUESTION</button>
 </div>
 
 

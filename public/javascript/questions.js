@@ -28,11 +28,11 @@ async function getQuestion(event) {
 };
 
 function selectThis() {
-    
+    thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
-    thisCard.classlist.add("selected");
     recordThisChoice();
     setTimeout(getQuestion(), 4000) 
+    
 }
 
 function selectThat() {
@@ -101,7 +101,6 @@ async function recordThatChoice(event) {
 }
 
 // document.querySelector('').addEventListener('click', recordChoice);
-document.querySelector('.next-question').addEventListener('click', getQuestion);
 document.querySelector('.next-question').addEventListener('click', getQuestion);
 thisCard.addEventListener('click', selectThis);
 thatCard.addEventListener('click', selectThat);

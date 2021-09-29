@@ -1,9 +1,9 @@
  <div class="container d-flex flex-column justify-content-center my-auto vertical-center">
-    <div class="card w-75 p-3 h-50 d-inline-block mx-auto d-flex justify-content-center col px-md-5 top-card space-top">
+    <div id="this-card" class="card w-75 p-3 h-50 d-inline-block mx-auto d-flex justify-content-center col px-md-5 top-card space-top">
         <div class="card-body align-center justify-center">
             <h2 class="card-title text-center p-3 top">{{question.this_true}}</h2>
             {{!-- <h3 id="top-stat" class=" text-center hidden">{{question.answer_count}} users agree!</h3> --}}
-            <h3 id="top-stat" class=" text-center hidden">{{question.answered_true}} users agree!</h3>
+            <h3 id="this-stat" class=" text-center hidden">{{question.answered_true}} users agree!</h3>
         </div>
     </div>
 
@@ -11,10 +11,10 @@
         <img class= "resize-smaller" src="/images/thisthattext.png" alt="thisthat logo">
     </div>
 
-    <div class="card w-75 p-3 h-50 d-inline-block mx-auto d-flex justify-content-center col px-md-5 bottom-card space-bottom">
+    <div id="that-card" class="card w-75 p-3 h-50 d-inline-block mx-auto d-flex justify-content-center col px-md-5 bottom-card space-bottom">
         <div class="card-body align-center justify-center">
             <h2 class="card-title text-center p-3 top">{{question.that_false}}</h2>
-            {{!-- <h5 id="top-stat" class="text-center hidden">{{question.answered_false}}% of users agree!</h5> --}}
+            <h5 id="that-stat" class="text-center hidden">{{question.answered_false}} users agree!</h5>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
 </div> --}}
 
 <div>
-    <button type="submit" class="next-question">NEXT QUESTION</button>
+    <button type="submit" class="next-question btn action">NEXT QUESTION</button>
 </div>
 
 <script src="/javascript/questions.js"></script>
