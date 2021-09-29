@@ -81,6 +81,10 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/create', (req, res) => {
+    res.render('create-question');
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
@@ -89,11 +93,11 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/dashboard', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
-});
+// router.get('/dashboard', (req, res) => {
+//     if (req.session.loggedIn) {
+//         res.redirect('/');
+//         return;
+//     }
+//     res.render('login');
+// });
 module.exports = router;
