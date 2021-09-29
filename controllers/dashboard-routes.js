@@ -4,7 +4,8 @@ const auth = require('../utils/authorize')
 
 router.get('/', auth, (req, res) => {
     res.render('dashboard', {
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        username: req.session.username
     });
 });
 
