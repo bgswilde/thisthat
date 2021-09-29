@@ -1,48 +1,79 @@
 // handlebars will handle incrementing 
-let id = 1;
+// var id = 1;
 // when startingPoint > 21, message to say you've answered everything
 
-async function beginQuestion(event) {
-    event.preventDefault();
-    
-    const beginQuestion = document.querySelector('#begin');
-     
-    const response = await fetch(`/api/questions/1`, {
-        
-    })
-    if (response.ok) {
-        console.log('BEGIN button clicked')
-        document.location.replace('/questions')
-    } else{
-        alert(response.statusText);
-    }
-}
+// async function secondQuestion(event) {
+//     let id = 2;
+//     event.preventDefault();
+
+//     const response = await fetch(`/api/questions/${id}`, {
+//     });
+  
+
+//     if (response.ok) {
+//         document.location.replace(`/questions/${id}`);
+//         console.log('next button clicked');
+//         id++;
+//     } else{
+//         alert(response.statusText);
+//     }
+//     // id++
+// };
+
+// var id = 1;
 
 async function getQuestion(event) {
     event.preventDefault();
-
-    const nextQuestion = document.querySelector('.next-question');
-    // const topQuestion = document.querySelector('.top').value().trim();
-    // const bottomQuestion = document.querySelector('.bottom').value().trim();
+    
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+    id++;
+    console.log(id);
 
     const response = await fetch(`/api/questions/${id}`, {
-        // method: 'GET',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // }
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
     });
   
 
     if (response.ok) {
-        console.log('next button clicked')
-        
+        document.location.replace(`/questions/${id}`);
+        console.log('next button clicked');
+        // id++;
     } else{
         alert(response.statusText);
     }
-    id++;
-}
-// document.querySelector('.next-question').addEventListener('click', getQuestion);
-// document.querySelector('#begin').addEventListener('click', beginQuestion);
+};
+
+// async function getQuestion(event) {
+//     event.preventDefault();
+
+//     let id = 1;
+
+//     const response = await fetch(`/api/questions/${id}`, {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     });
+  
+
+//     if (response.ok) {
+//         id++;
+//         document.location.replace(`/questions/${id}`);
+//         console.log('next button clicked');
+//         // id++;
+//     } else{
+//         alert(response.statusText);
+//     }
+// };
+
+// document.querySelector('.second-question').addEventListener('click', secondQuestion);
+
+document.querySelector('.next-question').addEventListener('click', getQuestion);
 /* 
 
 ----initial-----

@@ -37,9 +37,9 @@ router.get('/login', (req, res) => {
 
 router.get('/:id', (req,res) => {
     Question.findOne({
-        // where: {
-        //     id: req.params.id
-        // },
+        where: {
+            id: req.params.id
+        },
         attributes: [
             'id','this_true','that_false',
             // [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count']
@@ -48,16 +48,16 @@ router.get('/:id', (req,res) => {
         ]
     })
     .then(singleQuestionData => {
-        console.log(singleQuestionData)
+        // console.log(singleQuestionData)
         if (!singleQuestionData) {
           res.status(404).json({ message: 'No question found with this id' });
           return;
         }
   
         const question = singleQuestionData.get({ plain: true });
-        // console.log(question)
+        console.log(question)
 
-        console.log(singleQuestionData[0])
+        // console.log(singleQuestionData[0])
         res.render('single-question', {
             question,
             loggedIn: req.session.loggedIn
