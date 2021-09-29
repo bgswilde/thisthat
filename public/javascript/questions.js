@@ -1,15 +1,11 @@
-// handlebars will handle incrementing 
-// var id = 1;
-// when startingPoint > 21, message to say you've answered everything
-
+// gets question one by one
 async function getQuestion(event) {
     event.preventDefault();
-    
+    // gets the last section of url, the id of the question
     let id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     id++;
-    console.log(id);
 
     const response = await fetch(`/api/questions/${id}`, {
         method: 'GET',
@@ -18,53 +14,74 @@ async function getQuestion(event) {
         }
     });
   
-
     if (response.ok) {
         document.location.replace(`/questions/${id}`);
         console.log('next button clicked');
-        // id++;
     } else{
-        // alert(response.statusText);
-        // add new handle bars so it can send user saying they've answered all question
-        // document.location.replace('/end');
+        document.location.replace('/end');
     }
 };
 
-// async function getQuestion(event) {
-//     event.preventDefault();
+async function recordThisChoice(event) {
+    event.preventDefault();
 
-//     let id = 1;
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length -1 
+    ]; 
 
-//     const response = await fetch(`/api/questions/${id}`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     });
-  
+    const response = await fetch(`api/questions/choice`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            question_id: id,
+            // how to get user id? can't use req.session.id
+            // user_id: 
+            choice: true
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-//     if (response.ok) {
-//         id++;
-//         document.location.replace(`/questions/${id}`);
-//         console.log('next button clicked');
-//         // id++;
-//     } else{
-//         alert(response.statusText);
-//     }
-// };
+    if (response.ok) {
+        // send over to next question
+        getQuestion();
+        console.log('CHOICE SELECTED');
+    } else{
+        document.location.reload();
+    }
+};
 
-// document.querySelector('.second-question').addEventListener('click', secondQuestion);
+async function recordThatChoice(event) {
+    event.preventDefault();
 
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length -1 
+    ]; 
+
+    const response = await fetch(`api/questions/choice`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            question_id: id,
+            // how to get user id? can't use req.session.id
+            // user_id: 
+            choice: false
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        console.log('CHOICE SELECTED');
+    } else{
+        document.location.reload();
+    }
+}
+
+// document.querySelector('').addEventListener('click', recordChoice);
 document.querySelector('.next-question').addEventListener('click', getQuestion);
-/* 
 
-----initial-----
-
-
-fetch find one question i
-index value ++
-
- 
+/*  
 ----next action-----
 
 event listener for each option
@@ -80,5 +97,4 @@ event listener on next button
 when they select next
 hidden classes applied again
 back to initial function
-
 */

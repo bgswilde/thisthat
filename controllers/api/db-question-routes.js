@@ -93,7 +93,7 @@ router.post('/', (req,res) => {
 router.put('/choice', (req,res) => {
     // to only allow loged in user then we can add if(req.session) and pull all this conde inside
     Choice.create({
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         question_id: req.body.question_id,
         choice: req.body.choice
     })
