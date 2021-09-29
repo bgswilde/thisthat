@@ -30,17 +30,17 @@ async function getQuestion(event) {
 function selectThis() {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
-    recordThisChoice();
-    setTimeout(getQuestion(), 4000) 
+    // recordThisChoice();
+    setTimeout(getQuestion(), 3000) 
     
 }
 
 function selectThat() {
     
     thatStat.classList.remove("hidden");
-    thatCard.classlist.add("selected");
-    recordThatChoice();
-    setTimeout(getQuestion(), 4000) 
+    thatCard.classList.add("selected");
+    // recordThatChoice();
+    setTimeout(getQuestion(), 3000) 
 }
 
 

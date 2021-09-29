@@ -86,7 +86,9 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/end', (req, res) => {
-    res.render('end');
+    res.render('end', {
+        loggedIn: req.session.loggedIn
+    });
 });
 
 router.get('/login', (req, res) => {
@@ -104,4 +106,5 @@ router.get('/login', (req, res) => {
 //     }
 //     res.render('login');
 // });
+
 module.exports = router;
