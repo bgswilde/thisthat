@@ -4,22 +4,27 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-9">
-      <form id="create-form">
-        <h5 class="card-title">Create a This/That</h5>
-        <div class="form-group text-dark">
-          <label for="this-option">This Option</label>
-          <input type="text" class="form-control" id="this-input" name="this-text" aria-describedby="this-help">
-          <small id="this-help" class="form-text text-muted">What's your THIS option? (Max 50 characters)</small>
+    <div class="col-sm-9 my-3">
+      <form id="create-form" class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create a This/That</h5>
+          <div class="form-group text-dark">
+            <label for="this-option">This Option</label>
+            <input type="text" class="form-control" id="this-input" name="this-text" aria-describedby="this-help">
+            <small id="this-help" class="form-text text-muted">(Max 50 characters)</small>
+          </div>
+          <div class="form-group text-dark">
+            <label for="that-option">That Option</label>
+            <input type="text" class="form-control" id="that-input" name="that-text" aria-describedby="that-help">
+            <small id="that-help" class="form-text text-muted">(Max 50 characters)</small>
+          </div>
+          <button type="submit" class="btn btn-dark" id="signBtn">Submit</button>
+          <p id="confirm-message" class="hidden my-2">Good one! Thanks for your submission!</p>       
         </div>
-        <div class="form-group text-dark">
-          <label for="that-option">That Option</label>
-          <input type="text" class="form-control" id="that-input" name="that-text" aria-describedby="that-help">
-          <small id="that-help" class="form-text text-muted">What's your THAT option? (Max 50 characters)</small>
-        </div>
-        <button type="submit" class="btn btn-dark" id="signBtn">Submit</button>
-        <p id="confirm-message" class="hidden">Good one! Thanks for your submission!</p>       
       </form>
+      <a role="button" class="btn action mt-3" href="./dashboard">Back To Dashboard</a>
     </div>
   </div>
 </div>
+
+<script src="/javascript/add-question.js"></script>
