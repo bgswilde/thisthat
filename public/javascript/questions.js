@@ -27,23 +27,6 @@ async function getQuestion(event) {
     }
 };
 
-function selectThis() {
-    thisCard.classList.add("selected");
-    thisStat.classList.remove("hidden");
-    recordThisChoice(event);
-    setTimeout(getQuestion(event), 3000) 
-    
-}
-
-function selectThat() {
-    
-    thatStat.classList.remove("hidden");
-    thatCard.classList.add("selected");
-    recordThatChoice(event);
-    setTimeout(getQuestion(event), 3000) 
-}
-
-
 async function recordThisChoice(event) {
     event.preventDefault();
 
@@ -51,12 +34,10 @@ async function recordThisChoice(event) {
         window.location.toString().split('/').length -1 
     ]; 
 
-    const response = await fetch(`api/questions/choice`, {
-        method: 'PUT',
+    const response = await fetch(`/api/questions/choice`, {
+        method: 'POST',
         body: JSON.stringify({
             question_id: id,
-            // how to get user id? can't use req.session.id
-            // user_id: 
             choice: true
         }),
         headers: {
@@ -66,7 +47,7 @@ async function recordThisChoice(event) {
 
     if (response.ok) {
         // send over to next question
-        getQuestion(event);
+        // getQuestion(event);
         console.log('CHOICE SELECTED');
     } else{
         document.location.reload();
@@ -80,12 +61,10 @@ async function recordThatChoice(event) {
         window.location.toString().split('/').length -1 
     ]; 
 
-    const response = await fetch(`api/questions/choice`, {
-        method: 'PUT',
+    const response = await fetch(`/api/questions/choice`, {
+        method: 'POST',
         body: JSON.stringify({
             question_id: id,
-            // how to get user id? can't use req.session.id
-            // user_id: 
             choice: false
         }),
         headers: {
@@ -98,6 +77,20 @@ async function recordThatChoice(event) {
     } else{
         document.location.reload();
     }
+}
+
+function selectThis(event) {
+    thisCard.classList.add("selected");
+    thisStat.classList.remove("hidden");
+    recordThisChoice(event);
+    setTimeout(getQuestion(event), 2500) 
+}
+
+function selectThat(event) {
+    thatStat.classList.remove("hidden");
+    thatCard.classList.add("selected");
+    recordThatChoice(event);
+    setTimeout(getQuestion(event), 2500) 
 }
 
 // document.querySelector('').addEventListener('click', recordChoice);
