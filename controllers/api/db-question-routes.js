@@ -12,7 +12,7 @@ router.get('/count', (req, res) => {
     })
 })
 
-router.get('/choices', (req, res) => {
+router.get('/', (req, res) => {
     Choice.findAll({
         where: {
             user_id: req.session.user_id
@@ -33,31 +33,31 @@ router.get('/choices', (req, res) => {
 });
         
 
-router.get('/', (req,res) => {
-    Question.findAll({
-        attributes: [
-            'id','this_true','that_false',
-            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count'],
-            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
-            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
-        ],
-        include: [
-            {
-                model: Choice,
-                attributes: ['question_id','user_id','choice'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-        ]
-    })
-    .then(dbQuestionData => res.json(dbQuestionData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
-})
+// router.get('/', (req,res) => {
+//     Question.findAll({
+//         attributes: [
+//             'id','this_true','that_false',
+//             [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count'],
+//             [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
+//             [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
+//         ],
+//         include: [
+//             {
+//                 model: Choice,
+//                 attributes: ['question_id','user_id','choice'],
+//                 include: {
+//                     model: User,
+//                     attributes: ['username']
+//                 }
+//             }
+//         ]
+//     })
+//     .then(dbQuestionData => res.json(dbQuestionData))
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     })
+// })
 
 // get single question
 router.get('/:id', (req,res) => {
