@@ -51,7 +51,7 @@ async function recordThisChoice(event) {
         window.location.toString().split('/').length -1 
     ]; 
 
-    const response = await fetch(`/choice`, {
+    const response = await fetch(`api/questions/choice`, {
         method: 'PUT',
         body: JSON.stringify({
             question_id: id,
