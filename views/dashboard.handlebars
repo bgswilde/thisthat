@@ -18,12 +18,20 @@
       <li>
         <article class="post">
           <div class="title">
-            <span>({{answer.choice}})</span>
-            {{!-- {{#if answer.choice = true}} --}}
-              <span>({{answer.question.this_true}})</span>
-            {{!-- {{else}} --}}
-              <span>({{answer.question.that_false}})</span>
-            {{!-- {{/if}} --}}
+            <span>{{answer.choice}}</span>
+              {{#if answer.choice}}
+                <h2>Question Title </h2>
+                <span>{{answer.question.that_false}}</span>
+                <span>{{answer.question.this_true}}</span>
+                <h2>You Selected</h2>
+                <span>{{answer.question.this_true}}</span>
+              {{else}}
+               <h2>Question Title </h2>
+              <span>{{answer.question.that_false}}</span>
+              <span>{{answer.question.this_true}}</span>
+              <h2>You Selected</h2>
+              <span>{{answer.question.that_false}}</span>
+              {{/if}}
           </div>
         </article>
       </li>
