@@ -30,8 +30,8 @@ async function getQuestion(event) {
 function selectThis() {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
-    // recordThisChoice();
-    setTimeout(getQuestion(), 3000) 
+    recordThisChoice(event);
+    setTimeout(getQuestion(event), 3000) 
     
 }
 
@@ -39,8 +39,8 @@ function selectThat() {
     
     thatStat.classList.remove("hidden");
     thatCard.classList.add("selected");
-    // recordThatChoice();
-    setTimeout(getQuestion(), 3000) 
+    recordThatChoice(event);
+    setTimeout(getQuestion(event), 3000) 
 }
 
 
@@ -51,7 +51,7 @@ async function recordThisChoice(event) {
         window.location.toString().split('/').length -1 
     ]; 
 
-    const response = await fetch(`api/questions/choice`, {
+    const response = await fetch(`/choice`, {
         method: 'PUT',
         body: JSON.stringify({
             question_id: id,
@@ -66,7 +66,7 @@ async function recordThisChoice(event) {
 
     if (response.ok) {
         // send over to next question
-        getQuestion();
+        getQuestion(event);
         console.log('CHOICE SELECTED');
     } else{
         document.location.reload();
