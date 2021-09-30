@@ -33,6 +33,13 @@ User.init(
                 validate: {
                     len: [4]
                 }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         }
     },
     {
