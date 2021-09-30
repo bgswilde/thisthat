@@ -12,6 +12,27 @@ router.get('/count', (req, res) => {
     })
 })
 
+router.get('/choices', (req, res) => {
+    Choice.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        attributes: ['choice'],
+        include: [
+            {
+                model: Question,
+                attributes: ['this_true', 'that_false']
+            }
+        ]
+    })
+    .then(choiceData => res.json(choiceData))
+    .catch(err => {
+        console.log(err)
+        res.status(500).json(err)
+    })
+});
+        
+
 router.get('/', (req,res) => {
     Question.findAll({
         attributes: [
