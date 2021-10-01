@@ -24,13 +24,10 @@ router.get('/', (req, res) => {
         const userChoices = dbChoiceData.map(choice => choice.get({ plain: true }));
         
         if(userChoices.length>0){
-            console.log('length of object greater than 0');
             res.render('dashboard', {
                 userChoices
             });
-            
         } else if(userChoices.length === 0){
-            console.log('length of object is 000000000');
             res.render('empty-dashboard', {
                 userChoices
             });
