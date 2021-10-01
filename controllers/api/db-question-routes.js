@@ -110,7 +110,7 @@ router.post('/', (req,res) => {
     })
 });
 
-// choice route
+// create choice route
 router.post('/choice', (req,res) => {
     // to only allow loged in user then we can add if(req.session) and pull all this conde inside
     Choice.create({
@@ -139,6 +139,22 @@ router.post('/choice', (req,res) => {
         res.status(400).json(err);
     })
 });
+
+// update choice route
+router.put('/choice/:id', (req,res) => {
+    // to only allow loged in user then we can add if(req.session) and pull all this conde inside
+    Choice.update(req.body,{
+        where: {
+            id: req.params.id,
+        }
+    })
+    .then(dbChoiceData => res.json(dbChoiceData))
+    .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+    })
+});
+
 
 // update question
 router.put('/:id', (req,res) => {

@@ -18,10 +18,12 @@ async function getQuestion(event) {
             'Content-Type': 'application/json'
         }
     });
+
+    console.log(response);
   
     if (response.ok) {
         document.location.replace(`/questions/${id}`);
-        console.log('next button clicked');
+        console.log('Getting next question');
     } else{
         document.location.replace('/end');
     }
@@ -50,7 +52,12 @@ async function recordThisChoice(event) {
         // getQuestion(event);
         console.log('CHOICE SELECTED');
     } else{
-        document.location.reload();
+        // setTimeout(function(){document.location.reload()}, 5000)
+        // document.location.reload();
+
+        // commented out line above because if they select the oppsite choice from their 
+        // previous answer it will just keep on reloading the same question over and over
+        setTimeout(function(){getQuestion(event)},5000)
     }
 };
 
@@ -75,7 +82,12 @@ async function recordThatChoice(event) {
     if (response.ok) {
         console.log('CHOICE SELECTED');
     } else{
-        document.location.reload();
+        // setTimeout(function(){document.location.reload()}, 5000)
+        // document.location.reload();
+
+        // commented out line above because if they select the oppsite choice from their 
+        // previous answer it will just keep on reloading the same question over and over
+        setTimeout(function(){getQuestion(event)},5000)
     }
 }
 
@@ -83,14 +95,16 @@ function selectThis(event) {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
     recordThisChoice(event);
-    setTimeout(getQuestion(event), 2500) 
+    setTimeout(function(){getQuestion(event)},5000)
+    // setTimeout(getQuestion(event), 2500) 
 }
 
 function selectThat(event) {
     thatStat.classList.remove("hidden");
     thatCard.classList.add("selected");
     recordThatChoice(event);
-    setTimeout(getQuestion(event), 2500) 
+    setTimeout(function(){getQuestion(event)},5000)
+    // setTimeout(getQuestion(event), 2500) 
 }
 
 // document.querySelector('').addEventListener('click', recordChoice);
