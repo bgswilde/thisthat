@@ -20,6 +20,7 @@
       {{!-- <a role="button" class="btn action mt-1" href="../create">Create a ThisThat</a> --}}
     </section>
     
+    {{#if userChoices}}
     <table class="table two-axis">
         <thead>
             <tr>
@@ -29,6 +30,7 @@
             </tr>
         </thead>
         <tbody>
+            
             {{#each userChoices as |answer|}}
             <tr>
                 <td>{{answer.question.this_true}}</td>
@@ -43,28 +45,15 @@
         </tbody>
     </table>
 
-      {{!-- {{#each userChoices as |answer|}}
-      <li>
-        <article class="post">
-          <div class="title">
-              {{#if answer.choice}}
-                <h2>Question Title </h2>
-                <span>{{answer.question.that_false}}</span>
-                <span>{{answer.question.this_true}}</span>
-                <h2>You Selected</h2>
-                <span>{{answer.question.this_true}}</span>
-              {{else}}
-               <h2>Question Title </h2>
-              <span>{{answer.question.that_false}}</span>
-              <span>{{answer.question.this_true}}</span>
-              <h2>You Selected</h2>
-              <span>{{answer.question.that_false}}</span>
-              {{/if}}
-          </div>
-        </article>
-      </li>
-      {{/each}} --}}
-    
+    {{else}}
+    <h1>NOTHIGNSFLSJFHLKSJDFLSKJDFKJJSDFJKSDFJKLSDFjklf</h1>
+    <section class="mt-5 align-items-start">
+      <h3>Check out your ThisThat Choices!</h3>
+      {{!-- <a role="button" class="btn action mt-1" href="../create">Create a ThisThat</a> --}}
+    </section>
+
+    {{/if}}
+
 </div>
 
 <script type="text/javascript" src="/javascript/basictable.min.js"></script>

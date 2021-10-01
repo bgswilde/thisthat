@@ -22,14 +22,26 @@ router.get('/', (req, res) => {
     })
     .then(dbChoiceData => {
         const userChoices = dbChoiceData.map(choice => choice.get({ plain: true }));
-        console.log(userChoices[0].choice);
-        // console.log(userChoices[0].question.this_true);
-        // console.log(userChoices[0].question.that_false);
-        // console.log(userChoices[0].question.answered_true);
+        
+        if(userChoices.length>0){
+            console.log('length of object greater than 0');
+            res.render('dashboard', {
+                userChoices
+            });
+            
+        } else if(userChoices.length === 0){
+            console.log('length of object is 000000000');
+            res.render('empty-dashboard', {
+                userChoices
+            });
+        }
 
-        res.render('dashboard', {
-            userChoices
-        });
+        console.log(userChoices[0]);
+        // console.log(userChoices);
+        // console.log(typeof userChoices);
+        console.log(userChoices.length);
+        
+        
     })
     .catch(err => {
         console.log(err)
