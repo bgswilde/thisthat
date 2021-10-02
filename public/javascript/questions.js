@@ -83,14 +83,14 @@ function selectThis(event) {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
     recordThisChoice(event);
-    setTimeout(getQuestion(event), 2500) 
+    setTimeout(function(){getQuestion(event), 2500}) 
 }
 
 function selectThat(event) {
     thatStat.classList.remove("hidden");
     thatCard.classList.add("selected");
     recordThatChoice(event);
-    setTimeout(getQuestion(event), 2500) 
+    setTimeout(function(){getQuestion(event), 2500}) 
 }
 
 // document.querySelector('').addEventListener('click', recordChoice);
