@@ -22,21 +22,25 @@ router.get('/', (req, res) => {
     })
     .then(dbChoiceData => {
         const userChoices = dbChoiceData.map(choice => choice.get({ plain: true }));
-        
-        if(userChoices.length>0){
-            res.render('dashboard', {
-                userChoices
-            });
-        } else if(userChoices.length === 0){
-            res.render('empty-dashboard', {
-                userChoices
-            });
-        }
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+            username: req.session.username,
+            userChoices
+        });
+        // if(userChoices.length>0){
+        //     res.render('dashboard', {
+        //         userChoices
+        //     });
+        // } else if(userChoices.length === 0){
+        //     res.render('empty-dashboard', {
+        //         userChoices
+        //     });
+        // }
 
-        console.log(userChoices[0]);
-        // console.log(userChoices);
-        // console.log(typeof userChoices);
-        console.log(userChoices.length);
+        // console.log(userChoices[0]);
+        // // console.log(userChoices);
+        // // console.log(typeof userChoices);
+        // console.log(userChoices.length);
         
         
     })
