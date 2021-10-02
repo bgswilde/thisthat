@@ -29,6 +29,34 @@ async function getQuestion(event) {
     }
 };
 
+// update question choice
+async function updateChoice(event) {
+    event.preventDefault();
+
+    let id = window.location.toString().split('/')[
+        window.location.toString().split('/').length -1 
+    ]; 
+
+    const response = await fetch(`/api/questions/choice/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            choice: false
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        // send over to next question
+        // getQuestion(event);
+        console.log('CHOICE UPDATED');
+    } else{
+        console.log('CHOICE UPDATED');
+        setTimeout(function(){getQuestion(event)},5000)
+    }
+};
+
 async function recordThisChoice(event) {
     event.preventDefault();
 
@@ -57,6 +85,8 @@ async function recordThisChoice(event) {
 
         // commented out line above because if they select the oppsite choice from their 
         // previous answer it will just keep on reloading the same question over and over
+        
+        updateChoice(event);
         setTimeout(function(){getQuestion(event)},5000)
     }
 };
@@ -87,6 +117,7 @@ async function recordThatChoice(event) {
 
         // commented out line above because if they select the oppsite choice from their 
         // previous answer it will just keep on reloading the same question over and over
+        updateChoice(event)
         setTimeout(function(){getQuestion(event)},5000)
     }
 }
