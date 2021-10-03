@@ -78,11 +78,4 @@ router.get('/:id', (req,res) => {
     })
 });
 
-// router.get('/questions/:id', (req, res) => {
-//     res.render('questions', {
-//         loggedIn: req.session.loggedIn
-//     });
-// });
-
-
 module.exports = router;

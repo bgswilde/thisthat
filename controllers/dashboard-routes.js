@@ -27,16 +27,6 @@ router.get('/', (req, res) => {
             username: req.session.username,
             userChoices
         });
-        // if(userChoices.length>0){
-        //     res.render('dashboard', {
-        //         userChoices
-        //     });
-        // } else if(userChoices.length === 0){
-        //     res.render('empty-dashboard', {
-        //         userChoices
-        //     });
-        // }
-
         console.log(userChoices[0] + 'DASHBOARD-ROUTES.JS');
     })
     .catch(err => {
@@ -44,13 +34,5 @@ router.get('/', (req, res) => {
         res.status(500).json(err)
     })
 });
-
-// router.get('/', auth, (req, res) => {
-//     res.render('dashboard', {
-//         loggedIn: req.session.loggedIn,
-//         username: req.session.username
-//     });
-// });
-
 
 module.exports = router;

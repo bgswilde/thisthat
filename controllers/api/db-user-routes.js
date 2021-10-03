@@ -23,16 +23,6 @@ router.get('/:id', (req,res) => {
         where: {
             id: req.params.id
         }
-        // this would be helpfull to see all the questions this specific user has created
-        // but that also means we have to add use_id to the question.js model
-        // include: [
-        //     {
-        //         model: Question,
-        //         attributes: ['id'],
-        //         through: Choice,
-        //         as: 'choice_vote'
-        //     }
-        // ]
     })
     .then(dbUserData => {
         if(!dbUserData) {

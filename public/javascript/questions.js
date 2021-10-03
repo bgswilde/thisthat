@@ -27,6 +27,7 @@ async function getQuestion(event) {
     }
 };
 
+// records true for top option
 async function recordThisChoice(event) {
     event.preventDefault();
 
@@ -46,14 +47,14 @@ async function recordThisChoice(event) {
     });
 
     if (response.ok) {
-        // send over to next question
-        // getQuestion(event);
-        console.log('CHOICE SELECTED');
-    } else{
-        document.location.reload();
+        console.log('choice selected');
+    } else{       
+        // document.location.reload();
+        console.log('question already previously answered');
     }
 };
 
+// records flase for bottom option
 async function recordThatChoice(event) {
     event.preventDefault();
 
@@ -73,9 +74,10 @@ async function recordThatChoice(event) {
     });
 
     if (response.ok) {
-        console.log('CHOICE SELECTED');
+        console.log('choice selected');
     } else{
-        document.location.reload();
+        // document.location.reload();
+        console.log('question already previously answered');
     }
 }
 
@@ -83,34 +85,16 @@ function selectThis(event) {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
     recordThisChoice(event);
-    setTimeout(function(){getQuestion(event), 2500}) 
+    setTimeout(function(){getQuestion(event)}, 2500);
 }
 
 function selectThat(event) {
     thatStat.classList.remove("hidden");
     thatCard.classList.add("selected");
     recordThatChoice(event);
-    setTimeout(function(){getQuestion(event), 2500}) 
+    setTimeout(function(){getQuestion(event)}, 2500);
 }
 
-// document.querySelector('').addEventListener('click', recordChoice);
 document.querySelector('.next-question').addEventListener('click', getQuestion);
 thisCard.addEventListener('click', selectThis);
 thatCard.addEventListener('click', selectThat);
-/*  
-----next action-----
-
-event listener for each option
-when they select their option,
-create the choice 
-selected style gets added class="selected"
-percentage stat hidden class removed, id "top-stat" or "bottom-stat"
-next button hidden class removed
-
-----final action-----
-
-event listener on next button
-when they select next
-hidden classes applied again
-back to initial function
-*/
