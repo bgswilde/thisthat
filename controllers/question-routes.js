@@ -16,8 +16,8 @@ router.get('/', (req,res) => {
         // console.log(dbQuestionData);
         // console.log(questions);
         res.render('questions', {
-            questions
-            // loggedIn: req.session.loggedIn
+            questions,
+            loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {
@@ -42,9 +42,20 @@ router.get('/:id', (req,res) => {
         },
         attributes: [
             'id','this_true','that_false',
-            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count']
-            // [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
-            // [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
+        ],            
+        include: [
+            {
+                model: Choice,
+                attributes: [
+                    'question_id','user_id','choice'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
         ]
     })
     .then(singleQuestionData => {
@@ -59,8 +70,8 @@ router.get('/:id', (req,res) => {
 
         // console.log(singleQuestionData[0])
         res.render('single-question', {
-            question,
-            loggedIn: req.session.loggedIn
+            question
+            // loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {
