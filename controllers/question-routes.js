@@ -66,9 +66,7 @@ router.get('/:id', (req,res) => {
         }
   
         const question = singleQuestionData.get({ plain: true });
-        console.log(question)
-
-        // console.log(singleQuestionData[0])
+        // console.log(question);
         res.render('single-question', {
             question
             // loggedIn: req.session.loggedIn

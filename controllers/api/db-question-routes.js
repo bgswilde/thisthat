@@ -89,6 +89,7 @@ router.get('/:id', (req,res) => {
             res.status(404).json({ message: 'no Question with that ID found'});
             return;
         }
+  
         res.json(dbQuestionData);
     })
     .catch(err => {
@@ -130,6 +131,15 @@ router.post('/choice', (req,res) => {
                     sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.id)`),
                     'answer_count'
                 ]
+                // [
+                //     sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`),
+                //     'answered_true'
+                // ],
+                // [
+                //     sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`),
+                //     'answered_false'
+                // ]
+
             ]
         })
     })
