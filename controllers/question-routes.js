@@ -42,9 +42,9 @@ router.get('/:id', (req,res) => {
         },
         attributes: [
             'id','this_true','that_false',
-            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count']
-            // [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
-            // [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
         ]
     })
     .then(singleQuestionData => {
@@ -55,12 +55,10 @@ router.get('/:id', (req,res) => {
         }
   
         const question = singleQuestionData.get({ plain: true });
-        console.log(question)
-
-        // console.log(singleQuestionData[0])
+        // console.log(question);
         res.render('single-question', {
-            question,
-            loggedIn: req.session.loggedIn
+            question
+            // loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {

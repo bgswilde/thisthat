@@ -33,12 +33,7 @@ router.get('/', (req, res) => {
             });
         }
 
-        console.log(userChoices[0]);
-        // console.log(userChoices);
-        // console.log(typeof userChoices);
-        console.log(userChoices.length);
-        
-        
+        console.log(userChoices[0] + 'DASHBOARD-ROUTES.JS');
     })
     .catch(err => {
         console.log(err)
