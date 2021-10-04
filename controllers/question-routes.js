@@ -13,9 +13,9 @@ router.get('/', auth, (req,res) => {
         ]
     })
     .then(dbQuestionData => {
-        const questions = dbQuestionData.map(question => question.get({ plain: true }));
-        res.render('questions', {
-            questions,
+        //const questions = dbQuestionData.map(question => question.get({ plain: true }));
+        res.render('single-question', {
+            //questions,
             loggedIn: req.session.loggedIn
         });
     })
