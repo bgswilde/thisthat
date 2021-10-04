@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
         },
         attributes: [
             'choice',
-            // [sequelize.literal(`(SELECT * FROM choice WHERE choice.choice = true )`), 'answered_true'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id)`), 'answer_count'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = true)`), 'answered_true'],
+            [sequelize.literal(`(SELECT COUNT(*) FROM choice WHERE question.id = choice.question_id AND choice.choice = false)`), 'answered_false']
         ],
         include: [
             {

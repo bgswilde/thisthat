@@ -13,8 +13,6 @@ router.get('/', (req,res) => {
     })
     .then(dbQuestionData => {
         const questions = dbQuestionData.map(question => question.get({ plain: true }));
-        // console.log(dbQuestionData);
-        // console.log(questions);
         res.render('questions', {
             questions,
             loggedIn: req.session.loggedIn
@@ -68,8 +66,8 @@ router.get('/:id', (req,res) => {
         const question = singleQuestionData.get({ plain: true });
         // console.log(question);
         res.render('single-question', {
-            question
-            // loggedIn: req.session.loggedIn
+            question,
+            loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {

@@ -4,8 +4,8 @@ const thatCard = document.getElementById('that-card');
 const thatStat = document.getElementById('that-stat');
 
 // gets question one by one
-async function getQuestion(event) {
-    event.preventDefault();
+async function getQuestion() {
+    // event.preventDefault();
     // gets the last section of url, the id of the question
     let id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
@@ -85,16 +85,16 @@ function selectThis(event) {
     thisCard.classList.add("selected");
     thisStat.classList.remove("hidden");
     recordThisChoice(event);
-    setTimeout(function(){getQuestion(event)}, 2500);
+    setTimeout(function(){getQuestion()}, 2500);
 }
 
 function selectThat(event) {
     thatStat.classList.remove("hidden");
     thatCard.classList.add("selected");
     recordThatChoice(event);
-    setTimeout(function(){getQuestion(event)}, 2500);
+    setTimeout(function(){getQuestion()}, 2500);
 }
 
-document.querySelector('.next-question').addEventListener('click', getQuestion);
+// document.querySelector('.next-question').addEventListener('click', getQuestion);
 thisCard.addEventListener('click', selectThis);
 thatCard.addEventListener('click', selectThat);

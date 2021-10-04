@@ -188,30 +188,33 @@ table.th {
     border-color: #efbe96;
 }
 
-.table thead th .choice {
-    background-color: #efbe96;
-    color: white;
-    border-color: white;
-}
 .table th {
     border-top: none;
     color: #00867e;
     border-color: #efbe96;
 }
-.table .choice {
+
+.table .choice-1 {
+    background-color: #efbe96;
+    color: white;
+    border-color: white;
+    border-right: solid 1px;
+}
+
+.table .choice-2 {
     background-color: #efbe96;
     color: white;
     border-color: white;
     border-radius: 0px 10px 0px 0px;
 }
-table.two-axis tr td:last-of-type {
+
+table.two-axis tr td:nth-last-child(-n+2) {
     background: #00867e;
     color: white;
     font-weight: 600;
     border-color: #efbe96;
     border-right: none;
 }
-
 
 @include media-breakpoint-up(sm) {
     .some-class {
