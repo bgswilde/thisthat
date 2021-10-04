@@ -1,7 +1,6 @@
 const sequelize = require('../config/connection');
 const router = require('express').Router();
 const { Choice, Question, User } = require('../models');
-const auth = require('../utils/authorize')
 
 // get all choice from specific user that is logged in
 router.get('/', (req, res) => {

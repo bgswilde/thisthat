@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const {User, Question, Choice } = require('../../models');
-// const auth = require('../../utils/authorize')
+const auth = require('../../utils/authorize')
 
 // get a count of all questions, to use as a max question filter so a user doesn't keep on going.
 router.get('/count', (req, res) => {
@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 });
 
 // get single question
-router.get('/:id', (req,res) => {
+router.get('/:id', auth, (req,res) => {
     Question.findOne({
         where: {
             id: req.params.id
@@ -73,7 +73,7 @@ router.get('/:id', (req,res) => {
 });
 
 // create aquestion
-router.post('/', (req,res) => {
+router.post('/', auth, (req,res) => {
     Question.create({
        this_true: req.body.this_true,
        that_false: req.body.that_false 
@@ -116,7 +116,7 @@ router.post('/choice', (req,res) => {
 });
 
 // update question
-router.put('/:id', (req,res) => {
+router.put('/:id', auth, (req,res) => {
     Question.update(req.body, {
         // req.body means to only update what is being passed through
         individualHooks: true,
@@ -138,7 +138,7 @@ router.put('/:id', (req,res) => {
 });
 
 // delete aquestion
-router.delete('/:id', (req,res) => {
+router.delete('/:id', auth, (req,res) => {
     Question.destroy({
         where: {
             id: req.params.id

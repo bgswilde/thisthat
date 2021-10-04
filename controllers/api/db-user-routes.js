@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { User, Question, Choice } = require('../../models');
-// const auth = require('../../utils/authorize');
+const { User } = require('../../models');
+const auth = require('../../utils/authorize');
 
 // get all users 
 router.get('/', (req,res) => {
@@ -86,7 +86,7 @@ router.post('/login', (req, res) => {
 });
 
 // update user
-router.put('/:id',(req,res) => {
+router.put('/:id', auth, (req,res) => {
     User.update(req.body, {
         // req.body means to only update what is being passed through
         individualHooks: true,
@@ -117,7 +117,7 @@ router.post('/logout', (req, res) => {
     }
 })
 // delete a user
-router.delete('/:id', (req,res) => {
+router.delete('/:id', auth, (req,res) => {
     User.destroy({
         where: {
             id: req.params.id

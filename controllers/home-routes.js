@@ -1,16 +1,13 @@
-const sequelize = require('../config/connection')
 const router = require('express').Router();
-const { Choice, Question, User } = require('../models');
-
 
 router.get('/', (req, res) => {
-    res.render('homepage', {
-        loggedIn: req.session.loggedIn
-    });
+    res.render('homepage');
 });
 
 router.get('/create', (req, res) => {
-    res.render('create-question');
+    res.render('create-question', {
+        loggedIn: req.session.loggedIn
+    });
 });
 
 router.get('/end', (req, res) => {
